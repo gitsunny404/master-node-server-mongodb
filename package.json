@@ -2,7 +2,7 @@
   "name": "master-node-server-mongodb-users",
   "version": "1.0.0",
   "description": "API for users with mongoDB database",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "nodemon server.js",
