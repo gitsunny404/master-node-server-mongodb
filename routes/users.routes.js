@@ -70,6 +70,18 @@ mongoose.connect(uri, { useNewUrlParser: true })
     }
   });
 
+  // DELETE user by id
+  router.delete('/:id', async (req, res)=>{
+    const userID = req.params.id;
+    try {
+        const user = await userModal.findByIdAndRemove(req.params.id);
+        if (!user) return res.status(404).send('User not found.');
+        res.send(`User with the user id ${userID} has been deleted successfully`);
+      } catch (ex) {
+        res.status(500).send('Something failed.');
+      }
+    });
+
 //   let users = [
 //     {
 //         "id":1,
