@@ -18,14 +18,12 @@ router.get('/', (req, res)=>{
 });
 
 import Joi from 'joi';
-
 const schema = Joi.object({
     id: Joi.number().integer().required(),
     name: Joi.string().min(3).max(30).required(),
     email: Joi.string().email().required(),
     gender: Joi.string().required()
   });
-
 router.post('/', (req, res)=>{
     const newUser = req.body;
     const { error } = schema.validate(newUser);
