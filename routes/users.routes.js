@@ -82,6 +82,17 @@ mongoose.connect(uri, { useNewUrlParser: true })
       }
     });
 
+    // PUT update data of the user by id
+    router.put('/:id', async (req, res)=>{
+        const userID = req.params.id;
+        try {
+            const user = await userModal.findByIdAndUpdate(userID, req.body, { new: true });
+            if (!user) return res.status(404).send('User not found.');
+            res.send(`User with the user id : ${userID} has been updated successfully...`);
+          } catch (ex) {
+            res.status(500).send('Something failed.');
+          }
+        });
 //   let users = [
 //     {
 //         "id":1,
